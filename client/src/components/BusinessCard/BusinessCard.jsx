@@ -13,7 +13,7 @@ const BusinessCard = ({
   url,
 }) => {
   return (
-    <div className="col-sm-4">
+    <div className="col-lg-4 col-md-6">
       <div className="card">
         <img
           src={image_url}
@@ -24,8 +24,8 @@ const BusinessCard = ({
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <div className="card-text row">
-            <div className="col-sm-8">Rating: {rating}</div>
-            <div className="col-sm-4 d-flex justify-content-end">
+            <div className="col-8">Rating: {rating}</div>
+            <div className="col-4 d-flex justify-content-end">
               {transactions.includes("pickup") && (
                 <FontAwesomeIcon icon={faCar} style={{ padding: 1 }} />
               )}
