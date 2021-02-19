@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCar, faHome } from "@fortawesome/free-solid-svg-icons";
+import PickupIcon from "../Icons/PickupIcon/PickupIcon";
+import DeliveryIcon from "../Icons/DeliveryIcon/DeliveryIcon";
 
 const BusinessCard = (props) => {
   const {
@@ -39,12 +39,8 @@ const BusinessCard = (props) => {
             </div>
           </div>
           <div className="col-12">
-            {transactions.includes("pickup") && (
-              <FontAwesomeIcon icon={faCar} style={{ padding: 1 }} />
-            )}
-            {transactions.includes("delivery") && (
-              <FontAwesomeIcon icon={faHome} style={{ padding: 1 }} />
-            )}
+            {transactions.includes("pickup") && <PickupIcon />}
+            {transactions.includes("delivery") && <DeliveryIcon />}
           </div>
           <div className="row">
             <div className="col text-center">

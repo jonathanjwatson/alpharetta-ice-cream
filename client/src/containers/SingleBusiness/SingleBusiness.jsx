@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faHome } from "@fortawesome/free-solid-svg-icons";
-
+import DeliveryIcon from "../../components/Icons/DeliveryIcon/DeliveryIcon";
+import PickupIcon from "../../components/Icons/PickupIcon/PickupIcon";
 const SingleBusiness = () => {
   const [business, setBusiness] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -73,12 +74,8 @@ const SingleBusiness = () => {
           </div>
           <div className="row p-1">
             <div className="col-12">
-              {business?.transactions?.includes("pickup") && (
-                <FontAwesomeIcon icon={faCar} style={{ padding: 1 }} />
-              )}
-              {business?.transactions?.includes("delivery") && (
-                <FontAwesomeIcon icon={faHome} style={{ padding: 1 }} />
-              )}
+              {business?.transactions?.includes("pickup") && <PickupIcon />}
+              {business?.transactions?.includes("delivery") && <DeliveryIcon />}
             </div>
           </div>
         </div>
@@ -99,11 +96,11 @@ const SingleBusiness = () => {
         </div>
       </div>
       <div className="row">
-          <div className="col">
-                <Link to="/" className="btn btn-info">
-                    Back to Top Five
-                </Link>
-          </div>
+        <div className="col">
+          <Link to="/" className="btn btn-info">
+            Back to Top Five
+          </Link>
+        </div>
       </div>
     </div>
   );
