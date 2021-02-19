@@ -1,8 +1,14 @@
 const express = require("express");
 const iceCreamController = require("../../controllers/iceCreamController");
 const router = express.Router();
-const { findAll } = require("../../controllers/iceCreamController");
+const {
+  findAll,
+  findByID,
+  findReviewsByID,
+} = require("../../controllers/iceCreamController");
 
 router.route("/").get(findAll);
+router.route("/:id").get(findByID);
+router.route("/:id/reviews").get(findReviewsByID);
 
 module.exports = router;
