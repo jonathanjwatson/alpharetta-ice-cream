@@ -4,8 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run start",
+    "heroku-postbuild": "npm run build",
+    "install": "cd client && npm install",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:prod": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,7 +25,12 @@
   },
   "homepage": "https://github.com/jonathanjwatson/alpharetta-ice-cream#readme",
   "dependencies": {
+    "concurrently": "^5.3.0",
     "express": "^4.17.1",
+    "if-env": "^1.0.4",
     "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
