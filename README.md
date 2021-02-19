@@ -30,3 +30,7 @@ YELP_API_KEY=YourYelpFusionApiKey
 
 1. To start the app, run `npm start`
 2. Your browser should open automatically, otherwise, navigate to [http://localhost:3000](http://localhost:3000)
+
+## Deployed Site
+
+The deployed site can be found here [Alpharetta Ice Cream](https://alpharetta-ice-cream.herokuapp.com/)
