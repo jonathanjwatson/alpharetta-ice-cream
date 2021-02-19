@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faHome } from "@fortawesome/free-solid-svg-icons";
 
-const BusinessCard = ({
-  display_phone,
-  id,
-  image_url,
-  location,
-  name,
-  rating,
-  transactions,
-  url,
-}) => {
+const BusinessCard = (props) => {
+  const {
+    display_phone,
+    id,
+    image_url,
+    location,
+    name,
+    rating,
+    transactions,
+  } = props;
   return (
     <div className="col-lg-4 col-md-6">
       <div className="card">
@@ -49,7 +49,10 @@ const BusinessCard = ({
           <div className="row">
             <div className="col text-center">
               <Link
-                to={`/businesses/${id}`}
+                to={{
+                  pathname: `/businesses/${id}`,
+                  state: { ...props },
+                }}
                 className="btn btn-primary"
                 style={{ width: "100%" }}
               >
