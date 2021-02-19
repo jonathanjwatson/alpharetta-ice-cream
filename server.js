@@ -6,6 +6,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
+const IceCreamController = require("./controllers/iceCreamController");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -36,6 +38,8 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
+
+app.use("/api/iceCream", IceCreamController);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
