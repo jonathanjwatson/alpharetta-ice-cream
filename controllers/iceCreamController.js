@@ -13,7 +13,19 @@ module.exports = {
         }
       )
       .then((response) => {
-        res.json(response.data);
+        const sortedBusinesses = [...response.data.businesses];
+        sortedBusinesses.sort((a, b) => {
+          if (a.rating < b.rating) {
+            return 1;
+          }
+          if (a.rating > b.rating) {
+            return -1;
+          }
+          return 0;
+        });
+        res.json({
+          businesses: sortedBusinesses,
+        });
       });
   },
 };
