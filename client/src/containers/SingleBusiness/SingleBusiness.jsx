@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faHome } from "@fortawesome/free-solid-svg-icons";
 import DeliveryIcon from "../../components/Icons/DeliveryIcon/DeliveryIcon";
 import PickupIcon from "../../components/Icons/PickupIcon/PickupIcon";
+import Review from "../../components/Review/Review";
 const SingleBusiness = () => {
   const [business, setBusiness] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -83,15 +84,7 @@ const SingleBusiness = () => {
       <div className="row">
         <div className="col">
           {reviews.map((review) => (
-            <>
-              <h5>
-                Here's what {review.user.name ? review.user.name : "someone"}{" "}
-                had to say . . .
-              </h5>
-              <p>
-                {review.text} <a href={review.url}>Read more</a>
-              </p>
-            </>
+            <Review {...review} key={review.id} />
           ))}
         </div>
       </div>
