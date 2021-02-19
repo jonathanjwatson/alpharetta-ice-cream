@@ -1,12 +1,11 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 
 const app = express();
 
 const PORT = process.env.PORT || 3001;
-
-const IceCreamController = require("./controllers/iceCreamController");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,7 +38,7 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.use("/api/iceCream", IceCreamController);
+app.use(routes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
