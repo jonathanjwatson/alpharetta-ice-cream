@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faHome } from "@fortawesome/free-solid-svg-icons";
 
 const BusinessCard = ({
   display_phone,
+  id,
   image_url,
   location,
   name,
@@ -15,42 +17,44 @@ const BusinessCard = ({
   return (
     <div className="col-lg-4 col-md-6">
       <div className="card">
-        <img
-          src={image_url}
-          className="card-img-top"
-          alt={name}
-          style={{ width: "100%", height: 300 }}
-        />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
+          <h3 className="card-title">{name}</h3>
+          <div className="row">
+            <img
+              src={image_url}
+              className="card-img-top"
+              alt={name}
+              style={{ width: "100%", height: 300 }}
+            />
+          </div>
           <div className="card-text row">
-            <div className="col-8">Rating: {rating}</div>
-            <div className="col-4 d-flex justify-content-end">
-              {transactions.includes("pickup") && (
-                <FontAwesomeIcon icon={faCar} style={{ padding: 1 }} />
-              )}
-              {transactions.includes("delivery") && (
-                <FontAwesomeIcon icon={faHome} style={{ padding: 1 }} />
-              )}
-            </div>
+            <div className="col-12">{display_phone}</div>
+            <div className="col-12">Rating: {rating}</div>
             <div className="col">
               <hr />
               {location?.address1}
               <br />
               {location?.city}, {location?.state} {location?.zip_code}
               <br />
-              {display_phone}
             </div>
           </div>
+          <div className="col-12">
+            {transactions.includes("pickup") && (
+              <FontAwesomeIcon icon={faCar} style={{ padding: 1 }} />
+            )}
+            {transactions.includes("delivery") && (
+              <FontAwesomeIcon icon={faHome} style={{ padding: 1 }} />
+            )}
+          </div>
           <div className="row">
-            <div className="col">
-              <a
-                href={url}
+            <div className="col text-center">
+              <Link
+                to={`/businesses/${id}`}
                 className="btn btn-primary"
                 style={{ width: "100%" }}
               >
-                Learn more
-              </a>
+                Read reviews
+              </Link>
             </div>
           </div>
         </div>

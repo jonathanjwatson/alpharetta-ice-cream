@@ -1,34 +1,17 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import BusinessCard from "./components/BusinessCard/BusinessCard";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./containers/Home/Home";
+import SingleBusiness from "./containers/SingleBusiness/SingleBusiness";
 
 function App() {
-  const [businesses, setBusinesses] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/api/iceCream")
-      .then((response) => {
-        setBusinesses(response.data.businesses);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <h1 className="text-center">Alpharetta Ice Cream</h1>
-        </div>
-      </div>
-      <div className="row d-flex justify-content-center">
-        {businesses.map((business) => (
-          <BusinessCard {...business} key={business.id} />
-        ))}
-      </div>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/businesses/:id" component={SingleBusiness} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
