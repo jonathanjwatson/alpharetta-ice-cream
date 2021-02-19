@@ -69,7 +69,7 @@ BusinessCard.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   transactions: PropTypes.array.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string
 };
 
 export default BusinessCard;
